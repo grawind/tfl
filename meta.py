@@ -95,7 +95,19 @@ def calculations_in_matrix_form(s):
     return result
 
 
+def multiplication_in_Z4(s):
+    t = 1
+    for i in s:
+        if i == "b":
+            t = t * 2
+        else:
+            t = 0
+    t = t % 4
+    return t
 
+
+def test_invariant2(s0, s1):
+    return multiplication_in_Z4(s0) == multiplication_in_Z4(s1)
 
 
 def test_invariant(s0, s1):
@@ -123,6 +135,13 @@ for j in range(0, 50000):
         print(s_0)
         print(s_1)
         fl = False
+
+    if not test_invariant2(s_0, s_1):
+        print(s_0)
+        print(s_1)
+        fl = False
+
+
 if fl:
     print(True)
 
