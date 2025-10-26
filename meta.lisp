@@ -71,6 +71,18 @@
                                 (,(second (second result)) 0))))))
         result)))
 
+(defun multiplication-in-Z4 (s)
+  (let ((result 1))
+    (loop for char across s do
+      (case char
+        (#\a (setf result 0))  ; a = 0
+        (#\b (setf result (mod (* result 2) 4)))  ; b = 2
+        (#\c (setf result 0))))  ; c = 0
+    result))
+    
+(defun test-invariant-Z4 (s0 s1)
+  (= (multiplication-in-Z4 s0) (multiplication-in-Z4 s1)))
+
 (defun test-invariant (s0 s1)
   (matrix-equal (calculations-in-matrix-form s0)
                 (calculations-in-matrix-form s1)))
@@ -93,12 +105,15 @@
                                       (nth (random k) positions))))))
         
         (let ((s-1 ss))
-          (unless (test-invariant s-0 s-1)
+          (unless (and (test-invariant s-0 s-1)
+                       (test-invariant-Z4 s-0 s-1))
             (format t "Инвариант нарушен:~%")
             (format t "s_0: ~A~%" s-0)
             (format t "s_1: ~A~%" s-1)
             (format t "Матрица s_0: ~A~%" (calculations-in-matrix-form s-0))
             (format t "Матрица s_1: ~A~%" (calculations-in-matrix-form s-1))
+            (format t "Z4 s_0: ~A~%" (multiplication-in-Z4 s-0))
+            (format t "Z4 s_1: ~A~%" (multiplication-in-Z4 s-1))
             (setf fl nil)))))
     
     (if fl
