@@ -252,6 +252,8 @@ T<sub>2</sub>->aT<sub>1</sub>T<sub>0</sub>a
 
 T<sub>2</sub> -> aT<sub>2</sub>T<sub>2</sub>a
 
+T<sub>2</sub> -> aT<sub>0</sub>T<sub>2</sub>a
+
 T<sub>2</sub> -> aT<sub>2</sub>a
 
 Ответ: КС, нерегулярный
