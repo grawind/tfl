@@ -218,6 +218,8 @@ T->ε
 
 S->T
 
+S->SbbS
+
 S<sup>'</sup> -> SbbBA
 
 S<sup>'</sup> -> ABbbS
