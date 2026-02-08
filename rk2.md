@@ -258,5 +258,7 @@ T<sub>2</sub> -> aT<sub>0</sub>T<sub>2</sub>a
 
 T<sub>2</sub> -> aT<sub>2</sub>a
 
+T<sub>2</sub> -> aT<sub>1</sub>aaT<sub>1</sub>aaa
+
 Ответ: КС, нерегулярный
 
