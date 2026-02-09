@@ -63,7 +63,7 @@ bbaabaa<sup>n</sup>ab(aab)<sup>n</sup>abaa<sup>t</sup>ab(aab)<sup>t</sup>aab, г
 
 Рассмотрим разбор слов вида
 
- bbaabaa<sup>s</sup>ab(aab)<sup>d</sup>abaa<sup>f</sup>ab(aab)<sup>g</sup>aab:
+ bbaabaa<sup>s</sup>ab(aab)<sup>d</sup>abaa<sup>f</sup>ab(aab)<sup>g</sup>aab, s>0,d>0, f>0, g>0.
 
 Любой нетерминал заканчивается на b. Тогда если перед нетерминалом строит a, то она полученна либо из 3 либо из 4.
 
