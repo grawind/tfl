@@ -264,5 +264,7 @@ T<sub>2</sub> -> aT<sub>1</sub>aaT<sub>1</sub>aaa
 
 T<sub>2</sub> -> aT<sub>1</sub>aT<sub>2</sub>T<sub>0</sub>aa
 
+T<sub>2</sub> -> aaT<sub>2</sub>T<sub>1</sub>aaT<sub>2</sub>aa
+
 Ответ: КС, нерегулярный
 
