@@ -118,7 +118,7 @@ class Parser_OPT:
             if j - i < 1:
                 return frozenset()
 
-            if s[i:i+1] == "ba" or s[j] == 'a':
+            if s[i:i+2] == "ba" or s[j] == 'a':
                 return frozenset()
 
             result = set()
@@ -144,7 +144,7 @@ class Parser_OPT:
             if j - i < 1:
                 return frozenset()
 
-            if s[i:i+1] == "ba" or s[j] == 'a':
+            if s[i:i+2] == "ba" or s[j] == 'a':
                 return frozenset()
 
             result = set()
@@ -234,9 +234,43 @@ def test_parser():
 
 
 def generate_only_true():
-    p = random.randint(1, 20)
-    w = random.randint(p+1, 40)
-    return "bbaaba"+ "a"*w+"ab"+"aab"*w+"aba"+"a"*p+"ab"+"aab"*p+"aab"
+    def T(n):
+        if n > 2:
+            l = random.randint(0, n)
+            t1 = S(l)
+            t2 = T(n-l)
+            return [t1[0] + "a" + t2[0], 1 + t1[1] + t2[1]]
+        else:
+            return ["ab", 1]
+
+    def S(n):
+        if n < 3:
+            return ["bb", 0]
+
+        p = random.randint(0, 2)
+
+        if p == 0:
+            l = random.randint(0, n)
+            t1 = S(l)
+            t2 = S(n - l)
+            if t1[1] > t2[1]:
+                return [t1[0] + "ab" + t2[0], 0]
+            else:
+                return [t1[0] + "ab" + t2[0], t2[1]]
+        elif p == 1:
+            t = T(n-1)
+            return ["a"+ t[0], 1 + t[1]]
+        else:
+            l = random.randint(0, n)
+            t1 = T(l)
+            t2 = T(n - l)
+            if t1[1] == t2[1]:
+                return [t1[0] + t2[0], 2*t1[1]]
+            else:
+                t = T(n - 1)
+                return ["a" + t[0], 1 + t[1]]
+
+    return S(random.randint(2, 100))[0]
 
 def generate_only_false():
     if random.getrandbits(1) == 1:
